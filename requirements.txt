@@ -1,0 +1,9 @@
+# 串口模式（USB / RemoteUty 虚拟串口）：零第三方依赖。
+#   Windows 串口直接用 ctypes 调 kernel32，不需要 pyserial；
+#   只有非 Windows 平台才会回退到 pyserial（见 serial_link.py）。
+#
+# WiFi（Icom LAN/RS-BA1）模式需要 icom-lan（MIT）：
+icom-lan>=1.1.0
+
+# 可选：非 Windows 平台的串口回退
+# pyserial>=3.5

@@ -1,0 +1,48 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ic705timesync-lan"
+version = "0.2.0"
+description = "用 Icom IC-705 内置 GPS 给电脑授时：CI-V over USB 串口 / Icom LAN（RS-BA1）"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "ic705timesync-lan contributors" }]
+keywords = [
+  "icom",
+  "ic-705",
+  "gps",
+  "time-sync",
+  "ft8",
+  "pota",
+  "ci-v",
+  "rs-ba1",
+  "icom-lan",
+]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Intended Audience :: Amateur Radio",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: Microsoft :: Windows",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Topic :: Communications :: Ham Radio",
+  "Topic :: System :: Systems Administration",
+]
+dependencies = []
+
+[project.optional-dependencies]
+# WiFi（LAN/RS-BA1）模式才需要；串口模式零第三方依赖
+lan = ["icom-lan>=1.1.0"]
+# 非 Windows 平台的串口回退
+serial = ["pyserial>=3.5"]
+
+[project.scripts]
+ic705timesync-lan = "ic705timesync.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
